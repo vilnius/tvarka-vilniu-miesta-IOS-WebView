@@ -13,7 +13,6 @@ final class ViewController: UIViewController {
 
     @IBOutlet weak var textField: UITextField!
     @IBOutlet weak var webView: UIWebView!
-   
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -22,6 +21,7 @@ final class ViewController: UIViewController {
         webView.scrollView.delegate = self
         webView.scrollView.bounces = false
         webView.loadRequest(NSURLRequest(url: URL as URL) as URLRequest)
+        webView.delegate = self
     }
 
     override func didReceiveMemoryWarning() {
@@ -53,6 +53,31 @@ extension ViewController: UIScrollViewDelegate {
 
     func viewForZooming(in scrollView: UIScrollView) -> UIView? {
         return nil
+    }
+
+}
+
+extension ViewController: UIWebViewDelegate {
+
+    func webView(_ webView: UIWebView, shouldStartLoadWith request: URLRequest, navigationType: UIWebViewNavigationType) -> Bool {
+        guard let url = request.url, let host = url.host else { return true }
+        
+        if host.contains("vilnius.lt") && url.path.contains("m/m_problems/files/mobile2/") {
+            guard let mutableRequest = (request as NSURLRequest).mutableCopy() as? NSMutableURLRequest else { return true }
+            guard var urlComponents = URLComponents(url: url, resolvingAgainstBaseURL: true) else { return true }
+
+            urlComponents.scheme = "https"
+            urlComponents.host = "tvarkaumiesta.lt"
+            urlComponents.path = url.path.replacingOccurrences(of: "m/m_problems/files/mobile2/", with: "mob_api/")
+
+            mutableRequest.url = urlComponents.url
+
+            webView.loadRequest(mutableRequest as URLRequest)
+
+            return false
+        }
+
+        return true
     }
 
 }
