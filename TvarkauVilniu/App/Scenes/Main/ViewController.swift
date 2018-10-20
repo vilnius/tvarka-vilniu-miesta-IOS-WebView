@@ -16,11 +16,12 @@ final class ViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        guard let URL = NSURL(string: "https://tvarkaumiesta.lt") else { return }
+
+        guard let url = URL(string: "https://tvarkaumiesta.lt") else { return }
 
         webView.scrollView.delegate = self
         webView.scrollView.bounces = false
-        webView.loadRequest(NSURLRequest(url: URL as URL) as URLRequest)
+        webView.loadRequest(URLRequest(url: url))
         webView.delegate = self
     }
 
