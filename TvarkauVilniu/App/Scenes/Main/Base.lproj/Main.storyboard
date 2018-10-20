@@ -28,7 +28,7 @@
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="4zP-Oa-20b"/>
                                 </constraints>
-                                <state key="normal" title="Atgal">
+                                <state key="normal" title="Pagrindinis">
                                     <color key="titleColor" red="0.99095022444444258" green="0.99792061527441622" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
                                 <connections>

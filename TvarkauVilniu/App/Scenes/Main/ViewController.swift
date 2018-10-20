@@ -17,7 +17,7 @@ final class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        guard let url = URL(string: "https://tvarkaumiesta.lt") else { return }
+        guard let url = URL(string: "https://tvarkaumiesta.lt/new_problem") else { return }
 
         webView.scrollView.delegate = self
         webView.scrollView.bounces = false
@@ -28,26 +28,11 @@ final class ViewController: UIViewController {
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
-
-    @IBAction func goAction(_ sender: Any) {
-        guard
-            let text = textField.text,
-            let url = NSURL(string: text)
-        else {
-            return
-        }
-        let req = NSURLRequest(url:url as URL)
-        self.webView.loadRequest(req as URLRequest)
-    }
     
     @IBAction func goBack(_ sender: Any) {
-        webView.goBack()
+        let request = URLRequest(url: URL(string: "https://tvarkaumiesta.lt/")!)
+        webView.loadRequest(request)
     }
-    
-    @IBAction func goFoward(_ sender: Any) {
-        webView.goForward()
-    }
-    
 }
 
 extension ViewController: UIScrollViewDelegate {
