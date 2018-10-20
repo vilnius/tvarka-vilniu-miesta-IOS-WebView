@@ -44,5 +44,9 @@
 		<string>UIInterfaceOrientationLandscapeRight</string>
 		<string>UIInterfaceOrientationPortraitUpsideDown</string>
 	</array>
+	<key>NSLocationWhenInUseUsageDescription</key>
+	<string>Programėlei reikia jūsų vietos, kad galėtų ją atvaizduoti žemėlapyje</string>
+	<key>NSCameraUsageDescription</key>
+	<string>Programėlei reikia prieigos prie kameros, kad galėtumėte nufotografuoti problemą.</string>
 </dict>
 </plist>
